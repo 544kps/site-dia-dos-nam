@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Dia dos Namorados</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-container">
+    <section class="login-card">
+      <div class="card-header">
+        <h1>Bem-vinda(o)</h1>
+        <p>Digite seu nome e senha para continuar.</p>
+      </div>
+
+      <form id="loginForm" class="login-form" novalidate>
+        <label for="username">Nome</label>
+        <input id="username" name="username" type="text" placeholder="Yasmmyn" autocomplete="off" required>
+
+        <label for="password">Senha</label>
+        <input id="password" name="password" type="password" placeholder="EUAMOOJP" required>
+
+        <div id="errorMessage" class="error-message" role="alert" aria-live="assertive"></div>
+
+        <button type="submit">Entrar</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    const validUser = 'Yasmmyn';
+    const validPass = 'EUAMOOJP';
+    const form = document.getElementById('loginForm');
+    const errorMessage = document.getElementById('errorMessage');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (username === validUser && password === validPass) {
+        errorMessage.textContent = '';
+        window.location.href = 'success.html';
+      } else {
+        errorMessage.textContent = 'Nome ou senha incorretos. Tente novamente.';
+      }
+    });
+  </script>
+</body>
+</html>
